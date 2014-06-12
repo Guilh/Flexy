@@ -1,0 +1,59 @@
+// Import Flexy and you're ready to go!
+
+@import "flexy";
+
+///////////////////////////////
+// Flexy Variables ///////////
+/////////////////////////////
+
+	// Config variable for setting flexbox support
+		$flexy-support: not -moz, -webkit, not -o, not -ms, official;
+
+//////////////////////////////
+// Flexy Mixins /////////////
+////////////////////////////
+
+	// Establish flexbox layout with default all values
+		@include flexy;
+
+	// Optional Arguments
+		@include flexy($el, $direction, $align, $justify, $flex);
+
+	 	// $el         - Defines the element or class to target as flex items
+		// $direction  - Set the flex-direction
+		// $align      - Align flex items
+		// $justify    - Set the flex container alignment
+		// $flex       - Set the flex value for flex items
+
+  // Variable Defaults
+
+  	// $el: li       
+		// $direction: row
+		// $align: stretch
+		// $justify: flex-start
+		// $flex: 0 1 auto
+
+	// Target a specific flex item and apply a flex-grow
+	@include flexy-grow($item, $amt);
+
+	// Change the order of flex items
+	@include flexy-order($order);
+
+//////////////////////////////
+// Examples /////////////////
+////////////////////////////
+
+.main-nav {
+	@include flexy($align: center, $flex: 1);
+	@include flexy-grow(2, 3);
+}
+.content-row {
+	@include flexy(".col", $flex: 1);
+	@include flexy-grow(1, 2);
+	.secondary-content {
+		@include flexy-order(3);
+	}
+	.extra-content {
+		@include flexy-order(2);
+	}
+}

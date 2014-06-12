@@ -1,0 +1,37 @@
+@import "compass/css3/shared";
+
+$flexy-support: not -moz, -webkit, not -o, not -ms, official !default;
+
+@mixin flexy(
+	$el: li,
+	$direction: null,
+	$align: null,
+	$justify: null,
+	$flex: null) {
+	// Establish the flex formatting context	
+	@include experimental-value(display,flex,$flexy-support...);
+	
+	// Set the default flex-direction
+	@include experimental(flex-direction,$direction,$flexy-support...);
+
+	// Align flex items
+	@include experimental(align-items,$align,$flexy-support...);
+
+  // Define the flex container alignment and distribution of space
+	@include experimental(justify-content,$justify,$flexy-support...);
+
+  // Target flex items and define a flex value
+	& > #{$el} {
+		@include experimental(flex,$flex,$flexy-support...);
+	}
+}
+@mixin flexy-grow($item,$amt) {
+  // Define the flex grow factor of a flex item
+	& > :nth-child(#{$item}) {
+		@include experimental(flex-grow,$amt,$flexy-support...);
+	}
+}
+@mixin flexy-order($order) {
+  // Set the layout order of a flex item
+	@include experimental(order,$order,$flexy-support...);
+}
