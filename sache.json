@@ -1,0 +1,5 @@
+{
+  "name": "Flexy",
+  "description": "A simple Flexbox layout extension for Compass.",
+  "tags": ["sass", "compass", "flexbox", "layout"]
+}
